@@ -1,4 +1,5 @@
 import json, random
+from ast import literal_eval
 from docs_for_processes.document_types import planning_dt, tender_dt
 from pprint import pprint, pformat
 from faker import Faker
@@ -18,5 +19,7 @@ for t in tender_dt:
     doc.create_payload_4_registration()
     doc.register_doc()
     doc.upload_doc()
-    print(json.dumps(doc.docs_2_cn()))
+    doc = doc.docs_2_cn()
+    doc = json.dumps(doc, indent=2)
+    print(doc, ',')
 
