@@ -15,19 +15,19 @@ class DocumentReadyToAttach:
 
     def create_document(self):
 
-        with open("{}/{}.{}".format('files', self.file_name, self.doc_format), 'wb') as fout:
+        with open("{}/{}.{}".format('docs_for_processes/files', self.file_name, self.doc_format), 'wb') as fout:
             fout.write(os.urandom(self.doc_size_kb))
         return 'successfully done.', self.file_name
 
     def calculate_md5_sum(self):
 
-        self.md5_returned = hashlib.md5(open('files/{}.{}'.format(self.file_name, self.doc_format),
+        self.md5_returned = hashlib.md5(open('docs_for_processes/files/{}.{}'.format(self.file_name, self.doc_format),
                                         'rb').read()).hexdigest()
         return self.md5_returned
 
     def calculate_doc_size(self):
 
-        self.size = os.path.getsize('files/{}.{}'.format(self.file_name, self.doc_format))
+        self.size = os.path.getsize('docs_for_processes/files/{}.{}'.format(self.file_name, self.doc_format))
         return str(self.size)
 
     def create_payload_4_registration(self):
@@ -57,7 +57,7 @@ class DocumentReadyToAttach:
     def upload_doc(self):
 
         headers = {"Authorization": 'Bearer {}'.format(self.auth_token)}
-        files = {'file': open('files/{}'.format(self.file_name), 'rb')}
+        files = {'file': open('docs_for_processes/files/{}'.format(self.file_name), 'rb')}
         self.uploaded_doc = requests.post('http://10.0.20.126:8900/api/v1/storage/upload/' + self.register_data,
                                           headers=headers, files=files).json()
         return self.uploaded_doc
