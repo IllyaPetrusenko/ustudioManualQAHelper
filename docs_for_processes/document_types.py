@@ -1,8 +1,10 @@
 
 planning_dt = ['procurement', 'riskProvisions']
 
-tender_dt = ['tenderNotice', 'biddingDocuments', 'technicalSpecifications', 'evaluationCriteria',
-             'evaluationReports', 'contractDraft', 'eligibilityCriteria', 'clarifications', 'shortlistedFirms',
-             'contractArrangements', 'contractSchedule', 'complaints', 'billOfQuantity', 'contractGuarantees',
-             'conflictOfInterest', 'illustration', 'cancellationDetails']
+tender_dt = ['projectPlan', 'evaluationReports', 'environmentalImpact', 'feasibilityStudy', 'billOfQuantity',
+             'marketStudies', 'tenderNotice', 'technicalSpecifications', 'contractDraft', 'illustration',
+             'conflictOfInterest', 'procurementPlan', 'contractArrangements', 'shortlistedFirms', 'contractGuarantees',
+             'needsAssessment', 'assetAndLiabilityAssessment', 'eligibilityCriteria', 'clarifications',
+             'evaluationCriteria', 'biddingDocuments', 'cancellationDetails', 'hearingNotice', 'complaints',
+             'riskProvisions']
 

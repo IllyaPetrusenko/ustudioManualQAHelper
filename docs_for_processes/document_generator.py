@@ -42,7 +42,8 @@ class DocumentReadyToAttach:
 
     def register_doc(self):
 
-        get_auth_token = requests.get('http://10.0.20.125:8900/api/v1/auth/signin', auth=HTTPBasicAuth('user', 'password')).json()
+        get_auth_token = requests.get('http://10.0.20.125:8900/api/v1/auth/signin',
+                                      auth=HTTPBasicAuth('user', 'password')).json()
 
         self.auth_token = get_auth_token['data']['tokens']['access']
 
@@ -60,6 +61,8 @@ class DocumentReadyToAttach:
         files = {'file': open('docs_for_processes/files/{}'.format(self.file_name), 'rb')}
         self.uploaded_doc = requests.post('http://10.0.20.126:8900/api/v1/storage/upload/' + self.register_data,
                                           headers=headers, files=files).json()
+        if 'error' in self.uploaded_doc:
+            print('ERROR. Storage does not work correctly!')
         return self.uploaded_doc
 
     def docs_2_cn(self):
