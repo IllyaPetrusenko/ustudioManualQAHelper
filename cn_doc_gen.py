@@ -29,7 +29,7 @@ format_types_1 = ['docx', 'pdf', 'doc', 'rtf', 'xls']
 
 def doc_upl():
     for t in tender_dt:
-        f_size = random.randint(1024, 5200000)
+        f_size = random.randint(1024, 520000)
         dfv = random.choice(format_types_1)
         type_d = t
         doc = DocumentReadyToAttach(doc_size_kb=f_size, file_name=fake_data.word(), doc_format=dfv,
@@ -48,7 +48,7 @@ def doc_upl():
 
 async def main():
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=2000) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=20) as executor:
         loop = asyncio.get_event_loop()
         futures = [
             loop.run_in_executor(
@@ -56,7 +56,7 @@ async def main():
                 doc_upl(),
                 print('1 iteration')
                 )
-            for i in range(200)
+            for i in range(2000)
         ]
         for response in await asyncio.gather(*futures):
             pass
